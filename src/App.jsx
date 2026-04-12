@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ============================================================
 // GAS エンドポイント設定
@@ -65,11 +65,11 @@ input, textarea, select { font: inherit; }
 .section-h {
   font-family: var(--serif); font-size: clamp(22px, 2.8vw, 32px);
   font-weight: 400; line-height: 1.55; color: var(--text);
-  margin-bottom: 18px; letter-spacing: 0.01em;
+  margin-bottom: 18px; letter-spacing: 0.01em; text-wrap: pretty;
 }
 .section-lead {
   font-size: 14.5px; color: var(--text-muted); line-height: 1.95;
-  max-width: 540px; font-weight: 300;
+  max-width: 540px; font-weight: 300; text-wrap: pretty; word-break: auto-phrase;
 }
 
 .btn-navy {
@@ -178,24 +178,26 @@ input, textarea, select { font: inherit; }
 .hero-body {
   font-size: 15px; color: var(--text-muted); line-height: 1.95;
   max-width: 420px; margin-bottom: 44px; font-weight: 300;
+  text-wrap: pretty; word-break: auto-phrase;
 }
 .hero-acts { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 
 /* ── ABOUT INTRO ── */
 .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .ai-num { font-family: var(--serif); font-size: 88px; font-weight: 300; color: rgba(28,58,94,0.06); line-height: 1; margin-bottom: 12px; }
-.ai-body { font-size: 15px; color: var(--text-mid); line-height: 1.95; font-weight: 300; }
+.ai-body { font-size: 15px; color: var(--text-mid); line-height: 1.95; font-weight: 300; text-wrap: pretty; }
 .ai-body p + p { margin-top: 1.4em; }
-.ai-note { margin-top: 24px; font-size: 13.5px; color: var(--text-muted); font-weight: 300; border-left: 2px solid var(--navy); padding-left: 14px; line-height: 1.8; }
+.ai-note { margin-top: 24px; font-size: 13.5px; color: var(--text-muted); font-weight: 300; border-left: 2px solid var(--navy); padding-left: 14px; line-height: 1.85; }
 
 /* ── SERVICES GRID ── */
 .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin-top: 56px; }
 .svc-card {
-  background: var(--bg); padding: 36px 28px;
+  background: var(--bg); padding: 40px 28px; text-align: center;
   transition: box-shadow var(--ease), background var(--ease);
+  display: flex; flex-direction: column; align-items: center;
 }
 .svc-card:hover { background: #FAFAFA; box-shadow: 0 6px 24px rgba(0,0,0,0.07); position: relative; z-index: 1; }
-.svc-ico { width: 36px; height: 36px; color: var(--navy); margin-bottom: 20px; }
+.svc-ico { width: 36px; height: 36px; color: var(--navy); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; }
 .svc-name { font-family: var(--serif); font-size: 16px; font-weight: 400; margin-bottom: 8px; color: var(--text); }
 .svc-tag { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
 
@@ -206,8 +208,8 @@ input, textarea, select { font: inherit; }
   align-items: start; padding: 36px 0; border-bottom: 1px solid var(--border);
 }
 .val-n { font-size: 11px; letter-spacing: 0.12em; color: var(--navy); font-weight: 500; padding-top: 4px; }
-.val-title { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 8px; line-height: 1.5; }
-.val-body { font-size: 14px; color: var(--text-muted); line-height: 1.9; font-weight: 300; }
+.val-title { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 8px; line-height: 1.55; text-wrap: pretty; }
+.val-body { font-size: 14px; color: var(--text-muted); line-height: 1.9; font-weight: 300; text-wrap: pretty; }
 
 /* ── WORKS STRIP ── */
 .wks-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
@@ -221,13 +223,13 @@ input, textarea, select { font: inherit; }
   text-transform: uppercase; color: var(--navy); background: rgba(28,58,94,0.06);
   padding: 3px 9px; border-radius: 2px; margin-bottom: 14px; font-weight: 500;
 }
-.wk-title { font-family: var(--serif); font-size: 14.5px; font-weight: 400; line-height: 1.6; margin-bottom: 8px; color: var(--text); }
-.wk-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
+.wk-title { font-family: var(--serif); font-size: 14.5px; font-weight: 400; line-height: 1.65; margin-bottom: 8px; color: var(--text); text-wrap: pretty; }
+.wk-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.85; }
 
 /* ── CTA BANNER ── */
 .cta-band { background: var(--navy); padding: 88px 32px; text-align: center; }
 .cta-h { font-family: var(--serif); font-size: clamp(20px, 2.8vw, 30px); font-weight: 300; color: white; margin-bottom: 16px; letter-spacing: 0.02em; }
-.cta-body { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.95; margin-bottom: 36px; max-width: 400px; margin-left: auto; margin-right: auto; font-weight: 300; }
+.cta-body { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.95; margin-bottom: 36px; max-width: 400px; margin-left: auto; margin-right: auto; font-weight: 300; text-wrap: pretty; word-break: auto-phrase; }
 .btn-white {
   display: inline-flex; align-items: center; gap: 8px; background: white;
   color: var(--navy); padding: 14px 40px; font-size: 13px; font-weight: 500;
@@ -240,7 +242,7 @@ input, textarea, select { font: inherit; }
 .inner-hero { padding: 60px 0 52px; background: var(--bg-alt); border-bottom: 1px solid var(--border); }
 .inner-ey { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); font-weight: 500; margin-bottom: 14px; }
 .inner-h { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 42px); font-weight: 300; color: var(--text); line-height: 1.45; letter-spacing: 0.01em; }
-.inner-lead { margin-top: 18px; font-size: 14.5px; color: var(--text-muted); line-height: 1.9; max-width: 520px; font-weight: 300; }
+.inner-lead { margin-top: 18px; font-size: 14.5px; color: var(--text-muted); line-height: 1.9; max-width: 520px; font-weight: 300; text-wrap: pretty; word-break: auto-phrase; }
 .breadcrumb { display: flex; gap: 6px; align-items: center; font-size: 11.5px; color: var(--text-muted); margin-bottom: 20px; }
 .breadcrumb button { background: none; border: none; font-size: 11.5px; color: var(--navy); cursor: pointer; padding: 0; }
 .breadcrumb button:hover { text-decoration: underline; }
@@ -256,7 +258,7 @@ input, textarea, select { font: inherit; }
 .svcd-short { font-size: 13px; color: var(--text-muted); line-height: 1.8; border-left: 2px solid var(--navy); padding-left: 14px; font-weight: 300; }
 .svcd-lbl { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 500; margin-top: 24px; margin-bottom: 8px; }
 .svcd-lbl:first-child { margin-top: 0; }
-.svcd-txt { font-size: 14px; color: var(--text-mid); line-height: 1.9; font-weight: 300; }
+.svcd-txt { font-size: 14px; color: var(--text-mid); line-height: 1.9; font-weight: 300; text-wrap: pretty; }
 
 /* ── MESSAGE PAGE ── */
 .msg-layout { display: grid; grid-template-columns: 220px 1fr; gap: 72px; padding-top: 8px; }
@@ -332,6 +334,8 @@ input, textarea, select { font: inherit; }
 .ferr a { color: var(--navy); text-decoration: underline; cursor: pointer; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+/* ── ハニーポット（ボットのみが入力する隠し欄） ── */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; pointer-events: none; }
 
 /* ── FOOTER ── */
 .ftr { background: #101520; padding: 60px 0 28px; }
@@ -340,9 +344,9 @@ input, textarea, select { font: inherit; }
   display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: start;
   padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.ftr-logo-ja { font-family: var(--serif); font-size: 17px; color: white; font-weight: 300; }
-.ftr-logo-en { font-size: 9.5px; color: rgba(255,255,255,0.32); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 3px; }
-.ftr-tagline { font-size: 13px; color: rgba(255,255,255,0.42); margin-top: 16px; line-height: 1.85; max-width: 260px; font-weight: 300; }
+.ftr-logo-ja { font-family: var(--serif); font-size: 17px; color: white; font-weight: 300; line-height: 1.3; }
+.ftr-logo-en { font-size: 9.5px; color: rgba(255,255,255,0.32); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 6px; display: block; }
+.ftr-tagline { font-size: 13px; color: rgba(255,255,255,0.42); margin-top: 20px; line-height: 2; max-width: 240px; font-weight: 300; }
 .ftr-nav { display: flex; gap: 56px; }
 .ftr-col h4 { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.22); margin-bottom: 18px; font-weight: 400; }
 .ftr-col button {
@@ -369,27 +373,44 @@ input, textarea, select { font: inherit; }
   .svcd-item { grid-template-columns: 1fr; gap: 20px; }
   .msg-layout { grid-template-columns: 1fr; gap: 36px; }
   .ct-layout { grid-template-columns: 1fr; gap: 40px; }
-  .ftr-top { grid-template-columns: 1fr; gap: 40px; }
+  .ftr-top { grid-template-columns: 1fr; gap: 48px; }
+  .ftr-tagline { max-width: 100%; }
   .ftr-nav { flex-wrap: wrap; gap: 32px; }
   .sns-row { grid-template-columns: 1fr; }
+  .section-lead { max-width: 100%; }
 }
 @media (max-width: 640px) {
   :root { --hh: 64px; }
   .hdr-in { padding: 0 20px; }
   .container { padding: 0 20px; }
-  .section { padding: 60px 0; }
-  .hero { padding: 56px 0; min-height: calc(80vh - var(--hh)); }
+  .section { padding: 56px 0; }
+  .hero { padding: 48px 0; min-height: calc(75vh - var(--hh)); }
   .hero-bg { display: none; }
   .hero-dots { display: none; }
+  .hero-h { font-size: clamp(28px, 8vw, 40px); margin-bottom: 20px; }
+  .hero-body { font-size: 14px; margin-bottom: 32px; max-width: 100%; }
   .svc-grid { grid-template-columns: 1fr; }
+  .svc-card { padding: 32px 24px; }
   .wks-strip { grid-template-columns: 1fr; }
   .wks-grid { grid-template-columns: 1fr; }
-  .hero-acts { flex-direction: column; align-items: flex-start; }
-  .abt-table th { width: 100px; font-size: 12px; }
-  .abt-table td { padding-left: 16px; font-size: 13px; }
-  .inner-hero { padding: 44px 0 36px; }
-  .cta-band { padding: 64px 20px; }
+  .hero-acts { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .abt-table th { width: 90px; font-size: 12px; }
+  .abt-table td { padding-left: 14px; font-size: 13px; }
+  .inner-hero { padding: 40px 0 32px; }
+  .inner-h { font-size: clamp(22px, 6vw, 32px); }
+  .inner-lead { max-width: 100%; }
+  .cta-band { padding: 56px 20px; }
+  .cta-h { font-size: clamp(18px, 5vw, 26px); }
   .ftr-in { padding: 0 20px; }
+  .ftr-nav { gap: 24px; }
+  .ftr-top { gap: 36px; padding-bottom: 36px; }
+  .val-row { grid-template-columns: 36px 1fr; gap: 16px; }
+  .svcd-item { padding: 40px 0; }
+  .msg-layout { gap: 28px; }
+  .ct-layout { gap: 32px; }
+  .wk-card { padding: 20px 18px; }
+  .sns-card { padding: 20px 18px; }
+  .section-h { font-size: clamp(20px, 5.5vw, 28px); }
 }
 `;
 
@@ -467,7 +488,7 @@ function Footer({ go }) {
           <div>
             <div className="ftr-logo-ja">わたたたるお合同会社</div>
             <div className="ftr-logo-en">Watatataruo LLC</div>
-            <div className="ftr-tagline">複雑な情報を整理し、<br />必要な人に伝わる形で届ける。</div>
+            <div className="ftr-tagline">複雑な情報を整理し、必要な人に伝わる形で届ける。</div>
           </div>
           <div className="ftr-nav">
             <div className="ftr-col">
@@ -545,8 +566,7 @@ function Home({ go }) {
             <em>整理する。</em>
           </h1>
           <p className="hero-body anim d3">
-            AI活用・情報発信・業務設計を通じて、<br />
-            必要な人に、必要な情報を、伝わる形で届けることを仕事にしています。
+            AI活用・情報発信・業務設計を通じて、必要な人に、必要な情報を、伝わる形で届けることを仕事にしています。
           </p>
           <div className="hero-acts anim d4">
             <button className="btn-navy" onClick={() => go("services")}>
@@ -597,8 +617,7 @@ function Home({ go }) {
           <div className="eyebrow">Services</div>
           <h2 className="section-h">事業内容</h2>
           <p className="section-lead">
-            「こんなことも頼めるの？」と思うことも、まずご相談ください。<br />
-            どんな形でお手伝いできるかを一緒に考えます。
+            「こんなことも頼めるの？」と思うことも、まずご相談ください。どんな形でお手伝いできるかを一緒に考えます。
           </p>
           <div className="svc-grid">
             {services.map((s, i) => (
@@ -665,8 +684,7 @@ function Home({ go }) {
       <div className="cta-band">
         <div className="cta-h">気軽にご相談ください</div>
         <div className="cta-body">
-          「まだ依頼するか決まっていない」「相談できることなのかわからない」という段階でも大丈夫です。<br />
-          まずお声がけください。
+          「まだ依頼するか決まっていない」「相談できることなのかわからない」という段階でも大丈夫です。まずお声がけください。
         </div>
         <button className="btn-white" onClick={() => go("contact")}>
           お問い合わせページへ <ArrowRight />
@@ -731,8 +749,7 @@ function Services({ go }) {
           <div className="inner-ey">Services</div>
           <h1 className="inner-h">事業内容</h1>
           <p className="inner-lead">
-            AI活用・情報発信・業務設計を中心に、「整理する・伝える・仕組みにする」ことをお手伝いしています。<br />
-            詳細が決まっていない段階のご相談も歓迎です。
+            AI活用・情報発信・業務設計を中心に、「整理する・伝える・仕組みにする」ことをお手伝いしています。詳細が決まっていない段階のご相談も歓迎です。
           </p>
         </div>
       </div>
@@ -760,8 +777,7 @@ function Services({ go }) {
       <div className="cta-band">
         <div className="cta-h">どれに当てはまるかわからない場合も</div>
         <div className="cta-body">
-          「どの事業に入るのかわからない」という相談でも構いません。<br />
-          まず状況を教えていただければ、一緒に考えます。
+          「どの事業に入るのかわからない」という相談でも構いません。まず状況を教えていただければ、一緒に考えます。
         </div>
         <button className="btn-white" onClick={() => go("contact")}>
           相談してみる <ArrowRight />
@@ -1068,36 +1084,32 @@ function Privacy({ go }) {
       body: "会社名：わたたたるお合同会社\n代表者：わたたたるお\n所在地：インターネット",
     },
     {
-      title: "2. 取得する個人情報",
-      body: "当社は、お問い合わせフォームの利用に際して、以下の情報をご提供いただく場合があります。\n・お名前\n・メールアドレス\n・お問い合わせ内容",
+      title: "2. 取得する情報",
+      body: "お問い合わせフォームをご利用の際に、以下の情報をご提供いただきます。\n・お名前\n・メールアドレス\n・お問い合わせ種別\n・お問い合わせ内容\n\n上記以外の情報を自動取得する場合（アクセス解析など）は、本ポリシー内で別途お知らせします。",
     },
     {
       title: "3. 利用目的",
-      body: "ご提供いただいた個人情報は、以下の目的のみに使用します。\n・お問い合わせへの返答および対応\n・サービスに関するご案内（ご希望の場合）\n\n上記の目的以外には使用しません。",
+      body: "ご提供いただいた情報は、以下の目的に限り使用します。\n・お問い合わせへの返答および対応\n・不正利用の防止に必要な範囲での確認\n\n上記の目的以外には使用しません。",
     },
     {
-      title: "4. 第三者への提供",
-      body: "当社は、法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。",
+      title: "4. 外部サービスの利用",
+      body: "お問い合わせ内容の受け取りには、Google が提供する Google Apps Script（GAS）を利用しています。送信された情報は Google のサーバーを経由して処理されます。\n\nGoogle のプライバシーポリシーについては、Google の公式サイトをご参照ください。\n\nなお、スパム・不正送信の防止のため、送信内容に対して簡易的な自動チェックを行っています。",
     },
     {
-      title: "5. 情報の管理",
-      body: "当社は、ご提供いただいた個人情報の紛失・破壊・改ざん・漏洩等を防止するため、適切な安全管理措置を講じます。",
+      title: "5. 第三者への提供",
+      body: "法令に基づく場合、または人の生命・身体・財産の保護のために必要な場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。",
     },
     {
-      title: "6. Cookieおよびアクセス解析",
-      body: "当サイトでは、サービス向上のためにアクセス解析ツールを使用する場合があります。アクセス解析ツールはCookieを使用することがありますが、個人を特定する情報は含まれません。",
+      title: "6. 情報の管理",
+      body: "ご提供いただいた個人情報の紛失・破壊・改ざん・漏洩等を防止するため、適切な管理を行います。",
     },
     {
       title: "7. 開示・訂正・削除",
-      body: "ご自身の個人情報の開示・訂正・削除をご希望の場合は、お問い合わせフォームよりご連絡ください。内容を確認のうえ、適切に対応します。",
+      body: "ご自身の個人情報の開示・訂正・削除をご希望の場合は、お問い合わせフォームよりご連絡ください。内容を確認のうえ、合理的な範囲で対応します。",
     },
     {
       title: "8. プライバシーポリシーの変更",
       body: "本ポリシーは、法令の改正やサービス内容の変更に伴い、予告なく改定する場合があります。変更後のポリシーは、当ページに掲載した時点から効力を持ちます。",
-    },
-    {
-      title: "9. お問い合わせ",
-      body: "個人情報の取り扱いに関するお問い合わせは、サイト内のお問い合わせフォームよりご連絡ください。",
     },
   ];
 
@@ -1120,7 +1132,7 @@ function Privacy({ go }) {
 
       <section className="section">
         <div className="container" style={{ maxWidth: 720 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0, borderTop: "1px solid var(--border)" }}>
+          <div style={{ borderTop: "1px solid var(--border)" }}>
             {sections.map((s, i) => (
               <div key={i} style={{ padding: "36px 0", borderBottom: "1px solid var(--border)" }}>
                 <div style={{ fontFamily: "var(--serif)", fontSize: 16, fontWeight: 400, color: "var(--text)", marginBottom: 12 }}>
@@ -1138,9 +1150,12 @@ function Privacy({ go }) {
             わたたたるお合同会社
           </div>
 
-          <div style={{ marginTop: 40 }}>
+          <div style={{ marginTop: 40, display: "flex", gap: 20, flexWrap: "wrap" }}>
             <button className="link-arr" onClick={() => go("contact")}>
               お問い合わせはこちら <ArrowRight size={14} />
+            </button>
+            <button className="link-arr" onClick={() => go("home")}>
+              トップページへ <ArrowRight size={14} />
             </button>
           </div>
         </div>
@@ -1152,15 +1167,43 @@ function Privacy({ go }) {
 // ============================================================
 // CONTACT PAGE
 // ============================================================
+
+// 送信間隔制限：60秒以内の連投を防ぐ
+const SUBMIT_INTERVAL_MS = 60_000;
+
 function Contact({ go }) {
-  const [form, setForm] = useState({ name: "", email: "", kind: "", body: "" });
-  const [sent, setSent] = useState(false);
+  const [form, setForm]       = useState({ name: "", email: "", kind: "", body: "" });
+  // ハニーポット欄（通常ユーザーには見えない。ボットが埋めたら弾く）
+  const [honeypot, setHoneypot] = useState("");
+  const [sent, setSent]       = useState(false);
   const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState("");
+  const [err, setErr]         = useState("");
+  const lastSubmitRef         = useRef(0); // 最終送信タイムスタンプ
+
+  const resetForm = () => {
+    setForm({ name: "", email: "", kind: "", body: "" });
+    setHoneypot("");
+    setSent(false);
+  };
 
   const handleSubmit = async () => {
-    // バリデーション
-    if (!form.name || !form.email || !form.body) {
+    // ── ハニーポットチェック（値があればボットとみなして静かに弾く） ──
+    if (honeypot) {
+      // 成功したように見せてボットを欺く
+      setSent(true);
+      return;
+    }
+
+    // ── 送信間隔チェック ──
+    const now = Date.now();
+    if (now - lastSubmitRef.current < SUBMIT_INTERVAL_MS) {
+      const remaining = Math.ceil((SUBMIT_INTERVAL_MS - (now - lastSubmitRef.current)) / 1000);
+      setErr(`送信を受け付けました。次の送信は${remaining}秒後に可能です。`);
+      return;
+    }
+
+    // ── 入力バリデーション ──
+    if (!form.name.trim() || !form.email.trim() || !form.body.trim()) {
       setErr("お名前・メールアドレス・お問い合わせ内容は必須項目です。");
       return;
     }
@@ -1169,29 +1212,39 @@ function Contact({ go }) {
       setErr("メールアドレスの形式が正しくありません。");
       return;
     }
+    if (form.name.trim().length > 100) {
+      setErr("お名前は100文字以内でご入力ください。");
+      return;
+    }
+    if (form.body.trim().length > 2000) {
+      setErr("お問い合わせ内容は2000文字以内でご入力ください。");
+      return;
+    }
 
     setErr("");
     setLoading(true);
 
     try {
       // GAS は POST を受け取ると 302 リダイレクトを返す。
-      // redirect:'follow' でリダイレクト先（script.googleusercontent.com）まで追い、
-      // application/x-www-form-urlencoded はシンプルリクエストなのでプリフライトなし。
+      // redirect:'follow' でリダイレクト先まで追い、JSON レスポンスを読む。
+      // application/x-www-form-urlencoded はシンプルリクエストなので CORS プリフライトなし。
       const res = await fetch(GAS_URL, {
         method: "POST",
         redirect: "follow",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
-          name: form.name,
-          email: form.email,
-          kind: form.kind || "（未選択）",
-          body: form.body,
+          name:     form.name.trim(),
+          email:    form.email.trim(),
+          kind:     form.kind || "（未選択）",
+          body:     form.body.trim(),
+          hp:       honeypot, // GAS側でも検証
         }).toString(),
       });
 
       const data = await res.json();
 
       if (data.result === "success") {
+        lastSubmitRef.current = Date.now(); // 送信成功時のみタイムスタンプを更新
         setSent(true);
       } else {
         throw new Error(data.message || "GAS側でエラーが発生しました");
@@ -1215,8 +1268,7 @@ function Contact({ go }) {
           <div className="inner-ey">Contact</div>
           <h1 className="inner-h">お問い合わせ</h1>
           <p className="inner-lead">
-            ご依頼・ご相談・ご質問など、どんなことでもお気軽にどうぞ。<br />
-            「まだ依頼するか決めていない」という段階でも歓迎です。
+            ご依頼・ご相談・ご質問など、どんなことでもお気軽にどうぞ。「まだ依頼するか決めていない」という段階でも歓迎です。
           </p>
         </div>
       </div>
@@ -1233,7 +1285,14 @@ function Contact({ go }) {
                 お問い合わせ内容によっては、ご対応が難しい場合もございます。その際は、理由とともにお断りさせていただくこともあります。
               </p>
               <p className="ct-note">
-                ご提供いただいた個人情報は、お問い合わせへの対応のみに使用します。
+                ご提供いただいた個人情報は、お問い合わせへの対応のみに使用します。詳しくは
+                <button
+                  onClick={() => go("privacy")}
+                  style={{ color: "var(--navy)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontSize: "inherit", padding: 0 }}
+                >
+                  プライバシーポリシー
+                </button>
+                をご確認ください。
               </p>
               <div style={{ marginTop: 32 }}>
                 <div style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 10, letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 500 }}>
@@ -1259,13 +1318,27 @@ function Contact({ go }) {
                   <button
                     className="link-arr"
                     style={{ marginTop: 24, display: "inline-flex" }}
-                    onClick={() => { setSent(false); setForm({ name: "", email: "", kind: "", body: "" }); }}
+                    onClick={resetForm}
                   >
                     別のお問い合わせをする <ArrowRight size={14} />
                   </button>
                 </div>
               ) : (
                 <div>
+                  {/* ── ハニーポット欄（通常ユーザーには見えない） ── */}
+                  <div className="visually-hidden" aria-hidden="true">
+                    <label htmlFor="hp-field">お電話番号（入力不要）</label>
+                    <input
+                      id="hp-field"
+                      type="text"
+                      name="hp"
+                      value={honeypot}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      onChange={e => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   <div className="fgrp">
                     <label className="flbl">お名前<span className="freq">必須</span></label>
                     <input
@@ -1274,6 +1347,7 @@ function Contact({ go }) {
                       placeholder="山田 太郎"
                       value={form.name}
                       disabled={loading}
+                      autoComplete="name"
                       onChange={e => setForm({ ...form, name: e.target.value })}
                     />
                   </div>
@@ -1285,6 +1359,7 @@ function Contact({ go }) {
                       placeholder="your@email.com"
                       value={form.email}
                       disabled={loading}
+                      autoComplete="email"
                       onChange={e => setForm({ ...form, email: e.target.value })}
                     />
                   </div>
@@ -1310,13 +1385,15 @@ function Contact({ go }) {
                       placeholder="どのようなことでも、まずお気軽にご記入ください。現状や課題を教えていただけると助かります。"
                       value={form.body}
                       disabled={loading}
+                      maxLength={2000}
                       onChange={e => setForm({ ...form, body: e.target.value })}
                     />
+                    <div style={{ fontSize: 11, color: "var(--text-muted)", textAlign: "right", marginTop: 4 }}>
+                      {form.body.length} / 2000
+                    </div>
                   </div>
                   {err && (
-                    <div className="ferr">
-                      {err}
-                    </div>
+                    <div className="ferr">{err}</div>
                   )}
                   <button className="fsub" onClick={handleSubmit} disabled={loading}>
                     {loading ? (
@@ -1387,4 +1464,3 @@ export default function App() {
     </div>
   );
 }
-

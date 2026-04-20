@@ -174,6 +174,7 @@ input, textarea, select { font: inherit; }
   font-weight: 300; line-height: 1.36; color: var(--text);
   margin-bottom: 24px; letter-spacing: 0.01em; max-width: 680px;
 }
+.hero-break { display: block; }
 .hero-h em { font-style: normal; color: var(--navy); font-weight: 600; }
 .hero-body {
   font-size: 15px; color: var(--text-muted); line-height: 2;
@@ -612,7 +613,10 @@ function Home({ go }) {
         </div>
         <div className="hero-in">
           <div className="hero-ey anim d1">Watatataruo LLC</div>
-          <h1 className="hero-h anim d2">わかりにくいを、<em>整理する。</em></h1>
+          <h1 className="hero-h anim d2">
+            <span className="hero-break">わかりにくいを、</span>
+            <em>整理する。</em>
+          </h1>
           <p className="hero-body anim d3">
             AI活用・情報発信・業務設計を通じて、必要な人に必要な情報を、伝わる形で届けることを仕事にしています。
           </p>

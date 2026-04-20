@@ -171,33 +171,40 @@ input, textarea, select { font: inherit; }
 .hero-ey::before { content: ''; display: block; width: 28px; height: 1px; background: var(--navy); }
 .hero-h {
   font-family: var(--serif); font-size: clamp(32px, 5vw, 60px);
-  font-weight: 300; line-height: 1.48; color: var(--text);
-  margin-bottom: 28px; letter-spacing: 0.01em; max-width: 600px;
+  font-weight: 300; line-height: 1.36; color: var(--text);
+  margin-bottom: 24px; letter-spacing: 0.01em; max-width: 680px;
 }
 .hero-h em { font-style: normal; color: var(--navy); font-weight: 600; }
 .hero-body {
-  font-size: 15px; color: var(--text-muted); line-height: 1.95;
-  max-width: 420px; margin-bottom: 44px; font-weight: 300;
+  font-size: 15px; color: var(--text-muted); line-height: 2;
+  max-width: 560px; margin-bottom: 40px; font-weight: 300;
 }
-.hero-acts { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.hero-acts { display: flex; align-items: center; gap: 14px 18px; flex-wrap: wrap; }
 
 /* ── ABOUT INTRO ── */
-.ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.page-scope { text-align: left; }
+.page-intro { max-width: 620px; }
+.section-copy { max-width: 620px; }
+.section-action { display: flex; justify-content: flex-end; margin-top: 36px; }
+.section-action-compact { margin-top: 32px; }
+.cta-copy { max-width: 520px; text-wrap: pretty; }
+.ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .ai-num { font-family: var(--serif); font-size: 88px; font-weight: 300; color: rgba(28,58,94,0.06); line-height: 1; margin-bottom: 12px; }
-.ai-body { font-size: 15px; color: var(--text-mid); line-height: 1.95; font-weight: 300; }
+.ai-body { font-size: 15px; color: var(--text-mid); line-height: 2; font-weight: 300; }
 .ai-body p + p { margin-top: 1.4em; }
-.ai-note { margin-top: 24px; font-size: 13.5px; color: var(--text-muted); font-weight: 300; border-left: 2px solid var(--navy); padding-left: 14px; line-height: 1.8; }
+.ai-note { margin-top: 26px; max-width: 520px; font-size: 13.5px; color: var(--text-muted); font-weight: 300; border-left: 2px solid var(--navy); padding-left: 14px; line-height: 1.8; }
 
 /* ── SERVICES GRID ── */
-.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin-top: 56px; }
+.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin-top: 48px; align-items: stretch; }
 .svc-card {
-  background: var(--bg); padding: 36px 28px;
+  background: var(--bg); padding: 36px 28px; min-height: 100%;
+  display: flex; flex-direction: column; align-items: flex-start; text-align: left;
   transition: box-shadow var(--ease), background var(--ease);
 }
 .svc-card:hover { background: #FAFAFA; box-shadow: 0 6px 24px rgba(0,0,0,0.07); position: relative; z-index: 1; }
-.svc-ico { width: 36px; height: 36px; color: var(--navy); margin-bottom: 20px; }
-.svc-name { font-family: var(--serif); font-size: 16px; font-weight: 400; margin-bottom: 8px; color: var(--text); }
-.svc-tag { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
+.svc-ico { width: 36px; height: 36px; color: var(--navy); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; }
+.svc-name { font-family: var(--serif); font-size: 16px; font-weight: 400; margin-bottom: 10px; color: var(--text); line-height: 1.6; }
+.svc-tag { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; margin-top: auto; }
 
 /* ── VALUES ── */
 .val-list { border-top: 1px solid var(--border); }
@@ -210,10 +217,11 @@ input, textarea, select { font: inherit; }
 .val-body { font-size: 14px; color: var(--text-muted); line-height: 1.9; font-weight: 300; }
 
 /* ── WORKS STRIP ── */
-.wks-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.wks-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 42px; align-items: stretch; }
 .wk-card {
   border: 1px solid var(--border); padding: 24px 22px; border-radius: 3px;
   cursor: pointer; transition: border-color var(--ease), box-shadow var(--ease);
+  display: flex; flex-direction: column; align-items: flex-start; height: 100%; text-align: left;
 }
 .wk-card:hover { border-color: var(--navy); box-shadow: 0 4px 18px rgba(28,58,94,0.08); }
 .wk-tag {
@@ -221,13 +229,13 @@ input, textarea, select { font: inherit; }
   text-transform: uppercase; color: var(--navy); background: rgba(28,58,94,0.06);
   padding: 3px 9px; border-radius: 2px; margin-bottom: 14px; font-weight: 500;
 }
-.wk-title { font-family: var(--serif); font-size: 14.5px; font-weight: 400; line-height: 1.6; margin-bottom: 8px; color: var(--text); }
+.wk-title { font-family: var(--serif); font-size: 14.5px; font-weight: 400; line-height: 1.65; margin-bottom: 10px; color: var(--text); }
 .wk-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
 
 /* ── CTA BANNER ── */
 .cta-band { background: var(--navy); padding: 88px 32px; text-align: center; }
 .cta-h { font-family: var(--serif); font-size: clamp(20px, 2.8vw, 30px); font-weight: 300; color: white; margin-bottom: 16px; letter-spacing: 0.02em; }
-.cta-body { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.95; margin-bottom: 36px; max-width: 400px; margin-left: auto; margin-right: auto; font-weight: 300; }
+.cta-body { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.9; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; font-weight: 300; }
 .btn-white {
   display: inline-flex; align-items: center; gap: 8px; background: white;
   color: var(--navy); padding: 14px 40px; font-size: 13px; font-weight: 500;
@@ -248,18 +256,18 @@ input, textarea, select { font: inherit; }
 /* ── SERVICES DETAIL ── */
 .svcd-item {
   padding: 56px 0; border-bottom: 1px solid var(--border);
-  display: grid; grid-template-columns: 220px 1fr; gap: 56px;
+  display: grid; grid-template-columns: 240px 1fr; gap: 48px;
 }
 .svcd-item:first-child { border-top: 1px solid var(--border); }
 .svcd-num { font-size: 10px; letter-spacing: 0.15em; color: var(--navy); font-weight: 500; margin-bottom: 12px; }
-.svcd-name { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--text); line-height: 1.5; margin-bottom: 12px; }
+.svcd-name { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--text); line-height: 1.45; margin-bottom: 12px; }
 .svcd-short { font-size: 13px; color: var(--text-muted); line-height: 1.8; border-left: 2px solid var(--navy); padding-left: 14px; font-weight: 300; }
 .svcd-lbl { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 500; margin-top: 24px; margin-bottom: 8px; }
 .svcd-lbl:first-child { margin-top: 0; }
-.svcd-txt { font-size: 14px; color: var(--text-mid); line-height: 1.9; font-weight: 300; }
+.svcd-txt { font-size: 14px; color: var(--text-mid); line-height: 1.95; font-weight: 300; }
 
 /* ── MESSAGE PAGE ── */
-.msg-layout { display: grid; grid-template-columns: 220px 1fr; gap: 72px; padding-top: 8px; }
+.msg-layout { display: grid; grid-template-columns: 220px 1fr; gap: 64px; padding-top: 0; align-items: start; }
 .msg-avatar {
   width: 96px; height: 96px; border-radius: 50%; background: var(--bg-alt);
   border: 2px solid var(--border); display: flex; align-items: center; justify-content: center;
@@ -267,7 +275,7 @@ input, textarea, select { font: inherit; }
 }
 .msg-name { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 4px; }
 .msg-role { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; }
-.msg-body { font-size: 15px; line-height: 2.05; color: var(--text-mid); font-weight: 300; }
+.msg-body { font-size: 15px; line-height: 2; color: var(--text-mid); font-weight: 300; }
 .msg-body p + p { margin-top: 1.8em; }
 .msg-h3 {
   font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--text);
@@ -276,13 +284,13 @@ input, textarea, select { font: inherit; }
 .msg-sig { margin-top: 52px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; font-weight: 400; color: var(--text-mid); }
 
 /* ── WORKS PAGE ── */
-.wks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 20px; margin-top: 40px; }
+.wks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 18px; margin-top: 36px; align-items: stretch; }
 .sns-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 32px; }
-.sns-card { border: 1px solid var(--border); padding: 26px; border-radius: 3px; display: flex; gap: 16px; align-items: flex-start; }
+.sns-card { border: 1px solid var(--border); padding: 26px; border-radius: 3px; display: flex; gap: 16px; align-items: flex-start; text-align: left; }
 .sns-ico { width: 38px; height: 38px; border-radius: 8px; background: var(--bg-alt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--navy); }
 .sns-ttl { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
 .sns-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; font-weight: 300; }
-.works-note { margin-top: 32px; font-size: 13px; color: var(--text-muted); padding: 20px 24px; border: 1px dashed var(--border); border-radius: 3px; line-height: 1.8; font-weight: 300; }
+.works-note { margin-top: 28px; max-width: 780px; font-size: 13px; color: var(--text-muted); padding: 20px 24px; border: 1px dashed var(--border); border-radius: 3px; line-height: 1.9; font-weight: 300; }
 
 /* ── ABOUT TABLE ── */
 .abt-table { width: 100%; border-collapse: collapse; }
@@ -290,11 +298,21 @@ input, textarea, select { font: inherit; }
 .abt-table tr:first-child { border-top: 1px solid var(--border); }
 .abt-table th { width: 200px; padding: 22px 0; text-align: left; font-size: 13px; font-weight: 500; color: var(--text-muted); vertical-align: top; }
 .abt-table td { padding: 22px 0 22px 32px; font-size: 14px; line-height: 1.85; color: var(--text-mid); vertical-align: top; }
+.about-contact-cell { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-size: 12px; background: rgba(28,58,94,0.06); color: var(--navy); padding: 4px 12px; border-radius: 2px; }
 .sns-links { display: flex; gap: 12px; flex-wrap: wrap; }
 .sns-lnk { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; transition: all var(--ease); cursor: pointer; }
 .sns-lnk:hover { border-color: var(--navy); color: var(--navy); }
+.policy-card { margin-top: 56px; padding: 36px 32px; background: var(--bg-alt); border-radius: 3px; border-left: 3px solid var(--navy); }
+.policy-card-title { font-family: var(--serif); font-size: 16px; font-weight: 400; margin-bottom: 12px; }
+.policy-card-body { max-width: 520px; font-size: 13.5px; color: var(--text-muted); line-height: 1.9; font-weight: 300; margin-bottom: 16px; }
+.policy-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+.policy-item { padding: 36px 0; border-bottom: 1px solid var(--border); }
+.policy-title { font-family: var(--serif); font-size: 16px; font-weight: 400; color: var(--text); margin-bottom: 12px; }
+.policy-body { font-size: 14px; color: var(--text-mid); line-height: 1.95; font-weight: 300; white-space: pre-line; }
+.policy-issued { margin-top: 40px; font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+.policy-issued strong { display: block; margin-top: 4px; font-weight: 400; color: var(--text-mid); }
 
 /* ── CONTACT PAGE ── */
 .ct-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: start; }
@@ -334,15 +352,16 @@ input, textarea, select { font: inherit; }
 .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
 
 /* ── FOOTER ── */
-.ftr { background: #101520; padding: 60px 0 28px; }
+.ftr { background: #101520; padding: 60px 0 28px; text-align: left; }
 .ftr-in { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
 .ftr-top {
   display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: start;
   padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+.ftr-brand { display: flex; flex-direction: column; align-items: flex-start; }
 .ftr-logo-ja { font-family: var(--serif); font-size: 17px; color: white; font-weight: 300; }
 .ftr-logo-en { font-size: 9.5px; color: rgba(255,255,255,0.32); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 3px; }
-.ftr-tagline { font-size: 13px; color: rgba(255,255,255,0.42); margin-top: 16px; line-height: 1.85; max-width: 260px; font-weight: 300; }
+.ftr-tagline { font-size: 13px; color: rgba(255,255,255,0.42); margin-top: 16px; line-height: 1.85; max-width: 320px; font-weight: 300; }
 .ftr-nav { display: flex; gap: 56px; }
 .ftr-col h4 { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.22); margin-bottom: 18px; font-weight: 400; }
 .ftr-col button {
@@ -353,9 +372,10 @@ input, textarea, select { font: inherit; }
 .ftr-col button:hover { color: white; }
 .ftr-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 11px; transition: color var(--ease); cursor: pointer; }
 .ftr-col a:hover { color: white; }
-.ftr-bot { margin-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.ftr-bot { margin-top: 28px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px 24px; }
+.ftr-copy-wrap { display: flex; flex-direction: column; gap: 6px; }
 .ftr-copy { font-size: 11px; color: rgba(255,255,255,0.22); letter-spacing: 0.04em; }
-.ftr-meta { display: flex; gap: 20px; }
+.ftr-meta { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 .ftr-meta button { font-size: 11px; color: rgba(255,255,255,0.28); background: none; border: none; cursor: pointer; transition: color var(--ease); }
 .ftr-meta button:hover { color: rgba(255,255,255,0.7); }
 
@@ -370,6 +390,7 @@ input, textarea, select { font: inherit; }
   .msg-layout { grid-template-columns: 1fr; gap: 36px; }
   .ct-layout { grid-template-columns: 1fr; gap: 40px; }
   .ftr-top { grid-template-columns: 1fr; gap: 40px; }
+  .ftr-bot { align-items: flex-start; }
   .ftr-nav { flex-wrap: wrap; gap: 32px; }
   .sns-row { grid-template-columns: 1fr; }
 }
@@ -385,10 +406,18 @@ input, textarea, select { font: inherit; }
   .wks-strip { grid-template-columns: 1fr; }
   .wks-grid { grid-template-columns: 1fr; }
   .hero-acts { flex-direction: column; align-items: flex-start; }
+  .section-action { justify-content: flex-start; }
+  .section-copy, .page-intro, .works-note, .policy-card-body { max-width: none; }
+  .svc-card { padding: 28px 24px; }
+  .sns-card { padding: 22px; }
   .abt-table th { width: 100px; font-size: 12px; }
   .abt-table td { padding-left: 16px; font-size: 13px; }
+  .about-contact-cell { gap: 8px; }
   .inner-hero { padding: 44px 0 36px; }
   .cta-band { padding: 64px 20px; }
+  .policy-card { margin-top: 40px; padding: 28px 24px; }
+  .policy-item { padding: 28px 0; }
+  .ftr-bot { flex-direction: column; align-items: flex-start; }
   .ftr-in { padding: 0 20px; }
 }
 `;
@@ -417,6 +446,47 @@ const navItems = [
   { id: "works",    label: "発信・実績" },
   { id: "about",    label: "会社概要" },
 ];
+
+const pageMeta = {
+  home: {
+    title: "わたたたるお合同会社 | わかりにくいを整理する",
+    description: "わたたたるお合同会社は、AI活用支援・情報整理・コンテンツ企画制作・業務設計を通じて、複雑な情報を伝わる形に整える会社です。",
+  },
+  services: {
+    title: "事業内容 | わたたたるお合同会社",
+    description: "AI活用支援、コンテンツ企画・制作、情報整理・リサーチ、業務設計・仕組み化など、わたたたるお合同会社の事業内容をご案内します。",
+  },
+  message: {
+    title: "代表メッセージ | わたたたるお合同会社",
+    description: "わたたたるお合同会社の代表メッセージです。会社を立ち上げた背景や、整理して伝える仕事に込めている考えを紹介します。",
+  },
+  works: {
+    title: "発信・実績 | わたたたるお合同会社",
+    description: "noteでの記事、実績紹介、日々の発信など、わたたたるお合同会社の取り組みや考え方をまとめています。",
+  },
+  about: {
+    title: "会社概要 | わたたたるお合同会社",
+    description: "わたたたるお合同会社の会社概要ページです。会社名、事業内容、代表者、公式SNSなどの基本情報を掲載しています。",
+  },
+  contact: {
+    title: "お問い合わせ | わたたたるお合同会社",
+    description: "わたたたるお合同会社へのお問い合わせページです。ご依頼、ご相談、ご質問などを受け付けています。",
+  },
+  privacy: {
+    title: "プライバシーポリシー | わたたたるお合同会社",
+    description: "わたたたるお合同会社のプライバシーポリシーです。お問い合わせ時に取得する個人情報の取り扱いについて掲載しています。",
+  },
+};
+
+function upsertMeta(attr, key, content) {
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
 function Header({ cur, go, open, setOpen }) {
   return (
@@ -464,10 +534,10 @@ function Footer({ go }) {
     <footer className="ftr">
       <div className="ftr-in">
         <div className="ftr-top">
-          <div>
+          <div className="ftr-brand">
             <div className="ftr-logo-ja">わたたたるお合同会社</div>
             <div className="ftr-logo-en">Watatataruo LLC</div>
-            <div className="ftr-tagline">複雑な情報を整理し、<br />必要な人に伝わる形で届ける。</div>
+            <div className="ftr-tagline">複雑な情報を整理し、必要な人に伝わる形で届ける。</div>
           </div>
           <div className="ftr-nav">
             <div className="ftr-col">
@@ -485,7 +555,9 @@ function Footer({ go }) {
           </div>
         </div>
         <div className="ftr-bot">
-          <div className="ftr-copy">© わたたたるお合同会社</div>
+          <div className="ftr-copy-wrap">
+            <div className="ftr-copy">© わたたたるお合同会社</div>
+          </div>
           <div className="ftr-meta">
             <button onClick={() => go("about")}>会社概要</button>
             <button onClick={() => go("privacy")}>プライバシーポリシー</button>
@@ -531,7 +603,7 @@ const worksPrev = [
 
 function Home({ go }) {
   return (
-    <>
+    <div className="page-scope page-home">
       {/* ── HERO ── */}
       <section className="hero">
         <div className="hero-bg" />
@@ -540,13 +612,9 @@ function Home({ go }) {
         </div>
         <div className="hero-in">
           <div className="hero-ey anim d1">Watatataruo LLC</div>
-          <h1 className="hero-h anim d2">
-            わかりにくいを、<br />
-            <em>整理する。</em>
-          </h1>
+          <h1 className="hero-h anim d2">わかりにくいを、<em>整理する。</em></h1>
           <p className="hero-body anim d3">
-            AI活用・情報発信・業務設計を通じて、<br />
-            必要な人に、必要な情報を、伝わる形で届けることを仕事にしています。
+            AI活用・情報発信・業務設計を通じて、必要な人に必要な情報を、伝わる形で届けることを仕事にしています。
           </p>
           <div className="hero-acts anim d4">
             <button className="btn-navy" onClick={() => go("services")}>
@@ -596,9 +664,8 @@ function Home({ go }) {
         <div className="container">
           <div className="eyebrow">Services</div>
           <h2 className="section-h">事業内容</h2>
-          <p className="section-lead">
-            「こんなことも頼めるの？」と思うことも、まずご相談ください。<br />
-            どんな形でお手伝いできるかを一緒に考えます。
+          <p className="section-lead section-copy">
+            「こんなことも頼めるの？」と思うことも、まずご相談ください。どんな形でお手伝いできるかを一緒に考えます。
           </p>
           <div className="svc-grid">
             {services.map((s, i) => (
@@ -609,7 +676,7 @@ function Home({ go }) {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 36, textAlign: "right" }}>
+          <div className="section-action">
             <button className="link-arr" onClick={() => go("services")}>
               事業内容の詳細を見る <ArrowRight />
             </button>
@@ -653,7 +720,7 @@ function Home({ go }) {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 32, textAlign: "right" }}>
+          <div className="section-action section-action-compact">
             <button className="link-arr" onClick={() => go("works")}>
               発信・実績をもっと見る <ArrowRight />
             </button>
@@ -664,15 +731,14 @@ function Home({ go }) {
       {/* ── CTA ── */}
       <div className="cta-band">
         <div className="cta-h">気軽にご相談ください</div>
-        <div className="cta-body">
-          「まだ依頼するか決まっていない」「相談できることなのかわからない」という段階でも大丈夫です。<br />
-          まずお声がけください。
+        <div className="cta-body cta-copy">
+          「まだ依頼するか決まっていない」「相談できることなのかわからない」という段階でも大丈夫です。まずお声がけください。
         </div>
         <button className="btn-white" onClick={() => go("contact")}>
           お問い合わせページへ <ArrowRight />
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -720,7 +786,7 @@ const serviceDetail = [
 
 function Services({ go }) {
   return (
-    <>
+    <div className="page-scope page-services">
       <div className="inner-hero">
         <div className="container">
           <div className="breadcrumb">
@@ -730,9 +796,8 @@ function Services({ go }) {
           </div>
           <div className="inner-ey">Services</div>
           <h1 className="inner-h">事業内容</h1>
-          <p className="inner-lead">
-            AI活用・情報発信・業務設計を中心に、「整理する・伝える・仕組みにする」ことをお手伝いしています。<br />
-            詳細が決まっていない段階のご相談も歓迎です。
+          <p className="inner-lead page-intro">
+            AI活用・情報発信・業務設計を中心に、「整理する・伝える・仕組みにする」ことをお手伝いしています。詳細が決まっていない段階のご相談も歓迎です。
           </p>
         </div>
       </div>
@@ -759,15 +824,14 @@ function Services({ go }) {
 
       <div className="cta-band">
         <div className="cta-h">どれに当てはまるかわからない場合も</div>
-        <div className="cta-body">
-          「どの事業に入るのかわからない」という相談でも構いません。<br />
-          まず状況を教えていただければ、一緒に考えます。
+        <div className="cta-body cta-copy">
+          「どの事業に入るのかわからない」という相談でも構いません。まず状況を教えていただければ、一緒に考えます。
         </div>
         <button className="btn-white" onClick={() => go("contact")}>
           相談してみる <ArrowRight />
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -776,7 +840,7 @@ function Services({ go }) {
 // ============================================================
 function Message({ go }) {
   return (
-    <>
+    <div className="page-scope page-message">
       <div className="inner-hero">
         <div className="container">
           <div className="breadcrumb">
@@ -857,7 +921,7 @@ function Message({ go }) {
           お問い合わせ <ArrowRight />
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -875,7 +939,7 @@ const worksData = [
 
 function Works({ go }) {
   return (
-    <>
+    <div className="page-scope page-works">
       <div className="inner-hero">
         <div className="container">
           <div className="breadcrumb">
@@ -885,9 +949,8 @@ function Works({ go }) {
           </div>
           <div className="inner-ey">Works & Publishing</div>
           <h1 className="inner-h">発信・実績</h1>
-          <p className="inner-lead">
-            noteでの記事、制作実績、日々の発信をまとめています。
-            実績がまだ多くない段階ですが、取り組んでいることや考え方を積み重ねていきます。
+          <p className="inner-lead page-intro">
+            noteでの記事、制作実績、日々の発信をまとめています。実績がまだ多くない段階ですが、取り組んでいることや考え方を積み重ねていきます。
           </p>
         </div>
       </div>
@@ -957,7 +1020,7 @@ function Works({ go }) {
           お問い合わせ <ArrowRight />
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -966,7 +1029,7 @@ function Works({ go }) {
 // ============================================================
 function About({ go }) {
   return (
-    <>
+    <div className="page-scope page-about">
       <div className="inner-hero">
         <div className="container">
           <div className="breadcrumb">
@@ -1023,10 +1086,12 @@ function About({ go }) {
               <tr>
                 <th>連絡先</th>
                 <td>
-                  お問い合わせフォームよりご連絡ください<br />
-                  <button className="link-arr" style={{ marginTop: 8 }} onClick={() => go("contact")}>
-                    お問い合わせページへ <ArrowRight size={14} />
-                  </button>
+                  <div className="about-contact-cell">
+                    <span>お問い合わせフォームよりご連絡ください</span>
+                    <button className="link-arr" onClick={() => go("contact")}>
+                      お問い合わせページへ <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -1041,11 +1106,9 @@ function About({ go }) {
             </tbody>
           </table>
 
-          <div style={{ marginTop: 56, padding: "36px 32px", background: "var(--bg-alt)", borderRadius: 3, borderLeft: "3px solid var(--navy)" }}>
-            <div style={{ fontFamily: "var(--serif)", fontSize: 16, fontWeight: 400, marginBottom: 12 }}>
-              プライバシーポリシー
-            </div>
-            <div style={{ fontSize: 13.5, color: "var(--text-muted)", lineHeight: 1.9, fontWeight: 300, marginBottom: 16 }}>
+          <div className="policy-card">
+            <div className="policy-card-title">プライバシーポリシー</div>
+            <div className="policy-card-body">
               お問い合わせの際にご提供いただいた個人情報の取り扱いについては、プライバシーポリシーをご覧ください。
             </div>
             <button className="link-arr" onClick={() => go("privacy")}>
@@ -1054,7 +1117,7 @@ function About({ go }) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
@@ -1102,7 +1165,7 @@ function Privacy({ go }) {
   ];
 
   return (
-    <>
+    <div className="page-scope page-privacy">
       <div className="inner-hero">
         <div className="container">
           <div className="breadcrumb">
@@ -1112,7 +1175,7 @@ function Privacy({ go }) {
           </div>
           <div className="inner-ey">Privacy Policy</div>
           <h1 className="inner-h">プライバシーポリシー</h1>
-          <p className="inner-lead">
+          <p className="inner-lead page-intro">
             わたたたるお合同会社（以下「当社」）は、お客様の個人情報の取り扱いについて、以下のとおり定めます。
           </p>
         </div>
@@ -1120,22 +1183,18 @@ function Privacy({ go }) {
 
       <section className="section">
         <div className="container" style={{ maxWidth: 720 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0, borderTop: "1px solid var(--border)" }}>
+          <div className="policy-list">
             {sections.map((s, i) => (
-              <div key={i} style={{ padding: "36px 0", borderBottom: "1px solid var(--border)" }}>
-                <div style={{ fontFamily: "var(--serif)", fontSize: 16, fontWeight: 400, color: "var(--text)", marginBottom: 12 }}>
-                  {s.title}
-                </div>
-                <div style={{ fontSize: 14, color: "var(--text-mid)", lineHeight: 1.95, fontWeight: 300, whiteSpace: "pre-line" }}>
-                  {s.body}
-                </div>
+              <div key={i} className="policy-item">
+                <div className="policy-title">{s.title}</div>
+                <div className="policy-body">{s.body}</div>
               </div>
             ))}
           </div>
 
-          <div style={{ marginTop: 40, fontSize: 13, color: "var(--text-muted)", lineHeight: 1.8 }}>
-            制定日：2026年1月<br />
-            わたたたるお合同会社
+          <div className="policy-issued">
+            <span>制定日：2026年1月</span>
+            <strong>わたたたるお合同会社</strong>
           </div>
 
           <div style={{ marginTop: 40 }}>
@@ -1145,7 +1204,7 @@ function Privacy({ go }) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
@@ -1353,16 +1412,36 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title =
-      page === "home"     ? "わたたたるお合同会社 | わかりにくいを整理する" :
-      page === "services" ? "事業内容 | わたたたるお合同会社" :
-      page === "message"  ? "代表メッセージ | わたたたるお合同会社" :
-      page === "works"    ? "発信・実績 | わたたたるお合同会社" :
-      page === "about"    ? "会社概要 | わたたたるお合同会社" :
-      page === "contact"  ? "お問い合わせ | わたたたるお合同会社" :
-      page === "privacy"  ? "プライバシーポリシー | わたたたるお合同会社" :
-      "わたたたるお合同会社";
+    const meta = pageMeta[page] ?? pageMeta.home;
+    document.title = meta.title;
+    upsertMeta("name", "description", meta.description);
+    upsertMeta("property", "og:title", meta.title);
+    upsertMeta("property", "og:description", meta.description);
+    upsertMeta("name", "twitter:title", meta.title);
+    upsertMeta("name", "twitter:description", meta.description);
   }, [page]);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "organization-jsonld";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "わたたたるお合同会社",
+      alternateName: "Watatataruo LLC",
+      description: pageMeta.home.description,
+      sameAs: [
+        "https://note.com/watatata00",
+        "https://x.com/watatata00",
+      ],
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const go = (p) => {
     setPage(p);
@@ -1387,4 +1466,3 @@ export default function App() {
     </div>
   );
 }
-
